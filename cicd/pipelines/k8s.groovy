@@ -1,29 +1,26 @@
-podTemplate(yaml: '''
+podTemplate(yaml: """
 apiVersion: v1
 kind: Pod
 spec:
   containers:
   - name: docker
-    image: docker:19.03.1
-    command:
-    - sleep
-    args:
-    - 99d
-    env:
-      - name: DOCKER_HOST
-        value: tcp://localhost:2375
-  - name: docker-daemon
-    image: docker:19.03.1-dind
+    image: docker:18.05-dind
+    tty: true
     securityContext:
       privileged: true
-    env:
-      - name: DOCKER_TLS_CERTDIR
-        value: ""
-''') {
+    volumeMounts:
+      - name: dind-storage
+        mountPath: /var/lib/docker
+  volumes:
+  - name: dind-storage
+    emptyDir: {}
+""") {
     node(POD_LABEL) {
         git 'https://github.com/jenkinsci/docker-jnlp-slave.git'
         container('docker') {
-            sh 'docker version && DOCKER_BUILDKIT=1 docker build --progress plain -t testing .'
+            sh """
+               docker version 
+               """
         }
     }
 }
