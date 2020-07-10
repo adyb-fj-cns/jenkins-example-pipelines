@@ -8,8 +8,8 @@ pipelineJob('build-jenkins-operator') {
             scm {
                 git {
                     remote {
-                        url('https://github.com/jenkinsci/kubernetes-operator.git')
-                        credentials('jenkins-operator')
+                        url('https://github.com/adyb-fj-cns/jenkins-example-pipelines.git')
+                        //credentials('jenkins-operator')
                     }
                     branches('*/master')
                 }
