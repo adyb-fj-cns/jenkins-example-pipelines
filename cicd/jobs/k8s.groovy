@@ -1,7 +1,5 @@
-#!/usr/bin/env groovy
-
-pipelineJob('build-jenkins-operator') {
-    displayName('Build jenkins-operator')
+pipelineJob('kubernetes-job') {
+    displayName('Kubernetes job')
 
     definition {
         cpsScm {
@@ -9,12 +7,11 @@ pipelineJob('build-jenkins-operator') {
                 git {
                     remote {
                         url('https://github.com/adyb-fj-cns/jenkins-example-pipelines.git')
-                        //credentials('jenkins-operator')
                     }
                     branches('*/master')
                 }
             }
-            scriptPath('cicd/pipelines/build.jenkins')
+            scriptPath('cicd/pipelines/k8s.groovy')
         }
     }
 }
