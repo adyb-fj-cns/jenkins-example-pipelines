@@ -20,17 +20,31 @@ spec:
 """) {
     node(POD_LABEL) {
       git 'https://github.com/adyb-fj-cns/jenkins-terraform-example.git'
-      container('terraform') {
+
+      stage('init'){
+        container('terraform') {
           sh """
             terraform init \
               -backend-config="address=consul-ui" \
               -input=false
+            """
+        }
+      }
 
+      stage('plan'){
+        container('terraform') {
+          sh """
             terraform plan \
               -var-file=jenkins.tfvars \
               -out=tfplan \
               -input=false
+            """
+        }
+      }
 
+      stage('apply'){
+        container('terraform') {
+          sh """
             terraform apply \
               -input=false \
               tfplan
@@ -39,5 +53,6 @@ spec:
 
             """
         }
+      }  
     }
 }
