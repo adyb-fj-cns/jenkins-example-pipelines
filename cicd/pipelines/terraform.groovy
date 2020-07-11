@@ -22,9 +22,19 @@ spec:
       git 'https://github.com/adyb-fj-cns/jenkins-terraform-example.git'
       container('terraform') {
           sh """
-            terraform init -input=false
-            terraform plan -input=false
-            terraform apply -input=false -auto-approve
+            terraform init \
+              -backend-config="address=consul-ui" \
+              -input=false
+
+            terraform plan \
+              -var-file=dev.tfvars \
+              -out=tfplan \
+              -input=false
+
+            terraform apply \
+              -input=false \
+              tfplan
+
             """
         }
     }
