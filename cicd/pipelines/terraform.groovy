@@ -27,13 +27,15 @@ spec:
               -input=false
 
             terraform plan \
-              -var-file=dev.tfvars \
+              -var-file=jenkins.tfvars \
               -out=tfplan \
               -input=false
 
             terraform apply \
               -input=false \
               tfplan
+
+            cat message.txt
 
             """
         }
