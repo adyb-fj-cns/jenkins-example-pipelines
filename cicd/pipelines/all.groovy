@@ -6,5 +6,8 @@ podTemplate() {
         stage('Kubernetes') {
             build 'kubernetes-job'
         } 
+        stage('Grafana') {
+            build 'grafana-job'
+        } 
     }
 }

@@ -2,8 +2,8 @@
 Replace url and scriptPath below with the correct paths
 */
 
-pipelineJob('terraform-job') {
-    displayName('Terraform job')
+pipelineJob('grafana-job') {
+    displayName('Grafana job')
 
     definition {
         cpsScm {
