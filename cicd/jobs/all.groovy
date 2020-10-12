@@ -8,7 +8,7 @@ pipelineJob('all-job') {
                     remote {
                         url('https://github.com/adyb-fj-cns/jenkins-example-pipelines.git')
                     }
-                    branches('*/master')
+                    branches('*/main')
                 }
             }
             scriptPath('cicd/pipelines/all.groovy')

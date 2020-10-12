@@ -1,3 +1,7 @@
+/* 
+Replace url and scriptPath below with the correct paths
+*/
+
 pipelineJob('terraform-job') {
     displayName('Terraform job')
 
@@ -11,7 +15,7 @@ pipelineJob('terraform-job') {
                     branches('*/main')
                 }
             }
-            scriptPath('cicd/pipelines/terraform.groovy')
+            scriptPath('cicd/pipelines/grafana.groovy')
         }
     }
 }
