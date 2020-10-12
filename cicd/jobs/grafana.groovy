@@ -12,7 +12,7 @@ pipelineJob('grafana-job') {
                     remote {
                         url('https://github.com/adyb-fj-cns/jenkins-example-pipelines.git')
                     }
-                    branches('*/main')
+                    branches('*/master')
                 }
             }
             scriptPath('cicd/pipelines/grafana.groovy')
