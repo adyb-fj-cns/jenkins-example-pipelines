@@ -21,21 +21,6 @@ spec:
   node(POD_LABEL) {
     git branch: 'main', url: 'https://github.com/adyb-fj-cns/grafana-dashboards'
 
-    stage('convert'){
-      container('grafonnet') {
-        sh '''
-            SCRIPT_PATH="dashboards-jsonnet"; \
-            for file in $SCRIPT_PATH/*.jsonnet; \
-            do \
-                input=$(basename -- $file); \
-                output=$SCRIPT_PATH/${input%.*}.json; \
-                echo "Converting $file into $output"; \
-                jsonnet $file > $output; \
-            done
-          '''
-      }
-    }
-
     stage('upload'){
       container('grafonnet') {
         withCredentials([usernamePassword(

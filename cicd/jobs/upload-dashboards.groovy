@@ -2,8 +2,8 @@
 Replace url and scriptPath below with the correct paths
 */
 
-pipelineJob('grafana-job') {
-    displayName('Grafana job')
+pipelineJob('upload-dashboards') {
+    displayName('Upload Grafana Dashboards')
 
     definition {
         cpsScm {
@@ -15,7 +15,7 @@ pipelineJob('grafana-job') {
                     branches('*/master')
                 }
             }
-            scriptPath('cicd/pipelines/grafana.groovy')
+            scriptPath('cicd/pipelines/upload-dashboards.groovy')
         }
     }
 }
