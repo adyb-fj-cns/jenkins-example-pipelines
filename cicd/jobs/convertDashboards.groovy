@@ -2,7 +2,7 @@
 Replace url and scriptPath below with the correct paths
 */
 
-pipelineJob('convert_dashboards') {
+pipelineJob('convertDashboards') {
     displayName('Convert Grafana Dashboards')
 
     definition {
@@ -15,7 +15,7 @@ pipelineJob('convert_dashboards') {
                     branches('*/master')
                 }
             }
-            scriptPath('cicd/pipelines/convert-dashboards.groovy')
+            scriptPath('cicd/pipelines/convertDashboards.groovy')
         }
     }
 }

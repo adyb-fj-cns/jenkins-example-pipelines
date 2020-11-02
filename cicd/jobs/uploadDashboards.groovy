@@ -2,7 +2,7 @@
 Replace url and scriptPath below with the correct paths
 */
 
-pipelineJob('upload_dashboards') {
+pipelineJob('uploadDashboards') {
     displayName('Upload Grafana Dashboards')
 
     definition {
@@ -15,7 +15,7 @@ pipelineJob('upload_dashboards') {
                     branches('*/master')
                 }
             }
-            scriptPath('cicd/pipelines/upload-dashboards.groovy')
+            scriptPath('cicd/pipelines/uploadDashboards.groovy')
         }
     }
 }
