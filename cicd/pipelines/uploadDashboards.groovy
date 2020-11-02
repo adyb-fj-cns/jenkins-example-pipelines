@@ -5,8 +5,11 @@ metadata:
   name: pod
 spec:
   containers:
-  - name: uploader
+  - name: extractor
     image: adybfjcns/grafonnet
+    volumeMounts:
+    - mountPath: '/shared'
+      name: shared
     command:
     - cat
     tty: true
@@ -17,19 +20,39 @@ spec:
       limits:
         memory: "64Mi"
         cpu: "200m"  
+  - name: uploader
+    image: adybfjcns/grafonnet
+    volumeMounts:
+    - mountPath: '/shared'
+      name: shared
+    command:
+    - cat
+    tty: true
+    resources:
+      requests:
+        memory: "32Mi"
+        cpu: "100m"
+      limits:
+        memory: "64Mi"
+        cpu: "200m"  
+  volumes:
+  - name: shared
+    emptyDir: {}
 """) {
   node(POD_LABEL) {
     git branch: 'main', url: 'https://github.com/adyb-fj-cns/grafana-dashboards'
 
     stage('Extract JSON') {
+      container('extractor') {
         sh '''
            set +x;\
            echo "Extracting dashboards"
            '''
+      }
     }
 
     stage('Upload to Grafana'){
-      container('grafonnet') {
+      container('uploader') {
         withCredentials([usernamePassword(
           credentialsId: 'grafana', 
           usernameVariable: 'GRAFANA_USERNAME', 
