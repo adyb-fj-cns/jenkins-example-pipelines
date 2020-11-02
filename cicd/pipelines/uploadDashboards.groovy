@@ -59,6 +59,19 @@ spec:
           passwordVariable: 'GRAFANA_PASSWORD')]) {
 
           sh '''
+            set +x; \
+            SCRIPT_PATH="dashboards-jsonnet"; \
+            for file in $SCRIPT_PATH/*.jsonnet; \
+            do \
+                input=$(basename -- $file); \
+                output=$SCRIPT_PATH/${input%.*}.json; \
+                echo "Converting $file into $output"; \
+                jsonnet $file > $output; \
+                rm $file; \
+            done
+          '''
+          
+          sh '''
             set +x;\
             SCRIPT_PATH="dashboards-jsonnet"; \
             for file in $SCRIPT_PATH/*.json; \
