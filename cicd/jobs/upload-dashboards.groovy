@@ -2,7 +2,7 @@
 Replace url and scriptPath below with the correct paths
 */
 
-pipelineJob('upload-dashboards') {
+pipelineJob('upload_dashboards') {
     displayName('Upload Grafana Dashboards')
 
     definition {

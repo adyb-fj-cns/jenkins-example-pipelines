@@ -2,7 +2,7 @@
 Replace url and scriptPath below with the correct paths
 */
 
-pipelineJob('convert-dashboards') {
+pipelineJob('convert_dashboards') {
     displayName('Convert Grafana Dashboards')
 
     definition {
