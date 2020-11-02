@@ -19,9 +19,10 @@ spec:
         cpu: "200m"  
 """) {
   node(POD_LABEL) {
-    git branch: 'main', url: 'https://github.com/adyb-fj-cns/grafana-dashboards'
+    
 
     stage('convert'){
+      git branch: 'main', url: 'https://github.com/adyb-fj-cns/grafana-dashboards'
       container('grafonnet') {
         sh '''
             SCRIPT_PATH="dashboards-jsonnet"; \
@@ -37,6 +38,7 @@ spec:
     }
 
     stage('commit'){
+      git branch: 'main', url: 'https://github.com/adyb-fj-cns/grafana-json-dashboards'
       container('grafonnet') {
         sh '''
             echo "TODO: Committing the JSON dashboards"
