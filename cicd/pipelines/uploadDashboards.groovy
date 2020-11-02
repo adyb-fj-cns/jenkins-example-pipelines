@@ -5,7 +5,7 @@ metadata:
   name: pod
 spec:
   containers:
-  - name: grafonnet
+  - name: uploader
     image: adybfjcns/grafonnet
     command:
     - cat
@@ -21,7 +21,14 @@ spec:
   node(POD_LABEL) {
     git branch: 'main', url: 'https://github.com/adyb-fj-cns/grafana-dashboards'
 
-    stage('upload'){
+    stage('Extract JSON') {
+        sh '''
+           set +x;\
+           echo "Extracting dashboards"
+           '''
+    }
+
+    stage('Upload to Grafana'){
       container('grafonnet') {
         withCredentials([usernamePassword(
           credentialsId: 'grafana', 
@@ -29,6 +36,7 @@ spec:
           passwordVariable: 'GRAFANA_PASSWORD')]) {
 
           sh '''
+            set +x;\
             SCRIPT_PATH="dashboards-jsonnet"; \
             for file in $SCRIPT_PATH/*.json; \
             do \
