@@ -51,7 +51,7 @@ spec:
               curl -X POST \
                 -H 'Content-Type: application/json' \
                 -d "{\\\"dashboard\\\": $DASHBOARD, \\\"overwrite\\\": true}" \
-                "http://$GRAFANA_USERNAME:$GRAFANA_PASSWORD@grafana-ui:3000/api/dashboards/db";
+                "http://$GRAFANA_USERNAME:$GRAFANA_PASSWORD@grafana:3000/api/dashboards/db";
             done
             '''
             
