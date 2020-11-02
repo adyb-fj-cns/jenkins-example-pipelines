@@ -41,7 +41,11 @@ spec:
       git branch: 'main', url: 'https://github.com/adyb-fj-cns/grafana-json-dashboards'
       container('grafonnet') {
         sh '''
-            echo "TODO: Committing the JSON dashboards"
+            SCRIPT_PATH="dashboards-jsonnet"; \
+            for file in $SCRIPT_PATH/*.jsonnet; \
+            do \
+                echo "Committing $file"; \
+            done
           '''
       }
     }
