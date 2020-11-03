@@ -1,7 +1,3 @@
-/* 
-Replace url and scriptPath below with the correct paths
-*/
-
 pipelineJob('convertDashboards') {
     displayName('Convert Grafana Dashboards')
 

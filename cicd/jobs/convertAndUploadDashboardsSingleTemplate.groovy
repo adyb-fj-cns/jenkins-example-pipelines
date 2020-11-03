@@ -1,5 +1,5 @@
-pipelineJob('uploadDashboards') {
-    displayName('Upload Grafana Dashboards')
+pipelineJob('convertAndUploadDashboardsSingleTemplate') {
+    displayName('Convert And Upload Grafana Dashboards Single Template (Library)')
 
     definition {
         cpsScm {
@@ -11,7 +11,7 @@ pipelineJob('uploadDashboards') {
                     branches('*/master')
                 }
             }
-            scriptPath('cicd/pipelines/uploadDashboards.groovy')
+            scriptPath('cicd/pipelines/convertAndUploadDashboardsSingleTemplate.groovy')
         }
     }
 }

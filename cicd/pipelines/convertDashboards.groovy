@@ -40,11 +40,10 @@ spec:
     emptyDir: {}
 """) {
   node(POD_LABEL) {
-    
+    git branch: 'main', url: 'https://github.com/adyb-fj-cns/grafana-dashboards'
 
     stage('Convert Jsonnet'){
-      git branch: 'main', url: 'https://github.com/adyb-fj-cns/grafana-dashboards'
-
+           
       //dir ('json') {
       //  git branch: 'main', url: 'https://github.com/adyb-fj-cns/grafana-json-dashboards'
       //  credentials('adyb-fj-cns-github-token')
