@@ -37,27 +37,3 @@ Map multibranch_jobs = [
 multibranch_jobs.each { String name, Map settings ->
     generatePipelineJob name, settings
 }
-
-/*
-multibranchPipelineJob('grafanaDashboards') {
-    displayName('Convert and upload Grafana Dashboards (Multibranch)')
-
-    branchSources {
-        branchSource {
-            source {
-                git {
-                    id 'git-scm'
-                    remote 'https://github.com/adyb-fj-cns/grafana-dashboards.git'
-                    traits {
-                        gitBranchDiscovery()
-                        gitTagDiscovery()
-                    }
-                }
-            }
-        }
-    }
-    triggers {
-        cron('H H * * *')
-    }
-}
-*/
