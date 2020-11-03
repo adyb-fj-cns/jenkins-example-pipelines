@@ -52,6 +52,12 @@ spec:
       sourceDir = 'dashboards-jsonnet'  
     }
 
+    uploadTarball {
+      stageName = 'Package tarball (Library)'
+      containerName = 'converter'
+      sourceDir = 'dashboards-jsonnet'  
+    }
+
     uploadDashboards {
         stageName = 'Upload to Grafana (Library)'
         containerName = 'uploader'
