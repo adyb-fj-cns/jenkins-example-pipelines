@@ -6,15 +6,9 @@ multibranchPipelineJob('grafanaDashboards') {
             source {
                 git {
                     id 'git-scm'
-                    remote {
-                        url('https://github.com/adyb-fj-cns/grafana-dashboards.git')
-                    }
+                    remote 'https://github.com/adyb-fj-cns/grafana-dashboards.git'
                 }
             }
         }
-    }
-
-    triggers {
-        cron('H H * * *')
     }
 }
