@@ -5,8 +5,12 @@ podTemplate(
   node(POD_LABEL) {
     git branch: 'main', url: 'https://github.com/adyb-fj-cns/grafana-dashboards'
 
-    def lib = library (
-        identifier: 'my-shared-library@main'
+    //def lib = library (
+    //    identifier: 'my-shared-library@main'
+    //)
+    library identifier: 'dynamic-shared-library@main', retriever: modernSCM(
+      [$class: 'GitSCMSource',
+      remote: 'https://github.com/adyb-fj-cns/jenkins-shared-library']
     )
     
     convertDashboards {
