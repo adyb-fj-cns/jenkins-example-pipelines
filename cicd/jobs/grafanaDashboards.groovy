@@ -15,11 +15,6 @@ multibranchPipelineJob('grafanaDashboards') {
             }
         }
     }
-    factory {
-        pipelineBranchDefaultsProjectFactory {
-            scriptId('Jenkinsfile')
-        }
-    }
     triggers {
         cron('H H * * *')
     }
